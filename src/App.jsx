@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useToImage } from "@hcorta/react-to-image";
+import { useToPng } from "@hugocxl/react-to-image";
 import QRCode from "./QRCode";
 
 import "./App.css";
@@ -7,8 +7,8 @@ import "./App.css";
 export default function App() {
   const [url, setUrl] = useState();
   const [options, setOptions] = useState();
-  const { ref, isLoading, getSvg, getPng, error } = useToImage();
-
+  // const { ref, isLoading, getSvg, getPng, error } = useToImage();
+  const [state, ref, convert] = useToPng();
   function generateQRCode() {
     let website = document.getElementById("website").value;
     console.log(website);
@@ -36,7 +36,7 @@ export default function App() {
   }
 
   return (
-    <div className="App">
+    <div ref={ref} className="App">
       <div className="form">
         <h1>QR Code using react-qrcode-logo</h1>
         <input
@@ -52,7 +52,7 @@ export default function App() {
 
         <div id="qrcode-container">
           <hr />
-          <div ref={ref} style={{ padding: "30px" }}>
+          <div style={{ padding: "30px" }}>
             <h1>Hello</h1>
             {url ? <QRCode url={url} options={options} /> : null}
           </div>
@@ -69,13 +69,12 @@ export default function App() {
       <button
         onClick={() => {
           console.log("button clicked");
-          getPng();
+          // getPng();
+          convert();
         }}
       >
         Download SVG
       </button>
-      {isLoading && "loading..."}
-      {error && <div>{JSON.stringify(error)}</div>}
     </div>
   );
 }

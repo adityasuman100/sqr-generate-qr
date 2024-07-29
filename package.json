@@ -10,11 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@hcorta/react-to-image": "^1.0.0",
-    "@hugocxl/react-to-image": "^0.0.9",
+    "@hcorta/react-to-image": "^1.0.0", // do not work for HTMLCanvas element
+    "@hugocxl/react-to-image": "^0.0.9", // giving error
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-qrcode-logo": "^3.0.0"
+    "react-qrcode-logo": "^3.0.0" // working
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
